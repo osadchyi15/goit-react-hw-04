@@ -39,7 +39,7 @@ function App() {
         setIsBtnVisible(page < total_pages);
 
         if (page === total_pages) {
-          return toast.error("You are reached the end of collection!");
+          return toast.error("You are reached to the end of collection!");
         }
       } catch (err) {
         setError(err.message);
