@@ -54,6 +54,7 @@ function App() {
   const onSearch = (query) => {
     setImages([]);
     setQuery(query);
+    setPage(1);
     if (!query.trim()) {
       return toast.error("Fill some request!");
     }
