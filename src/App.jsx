@@ -8,6 +8,7 @@ import { requestImages } from "./services/api";
 import { LoadMoreBtn } from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
 import toast, { Toaster } from "react-hot-toast";
+import ToTopButton from "./components/ToTopButton/ToTopButton";
 
 function App() {
   const [images, setImages] = useState(null);
@@ -19,6 +20,7 @@ function App() {
   const [modalRegularUrl, setModalRegularUrl] = useState("");
   const [modalAlt, setModalAlt] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [windowScroll, setWindowScroll] = useState(false);
 
   useEffect(() => {
     const fethcImages = async () => {
@@ -56,8 +58,21 @@ function App() {
     setQuery(query);
     setPage(1);
     if (!query.trim()) {
+      setIsBtnVisible(false);
       return toast.error("Fill some request!");
     }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      window.scrollY > 100 ? setWindowScroll(true) : setWindowScroll(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+  }, [window.scrollY]);
+
+  const onClickTopButton = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setWindowScroll(false);
   };
 
   const onClick = () => {
@@ -91,9 +106,11 @@ function App() {
         <ImageModal
           modalUrl={modalRegularUrl}
           modalAlt={modalAlt}
+          isModalOpen={isModalOpen}
           onCloseModal={onCloseModal}
         />
       )}
+      {windowScroll && <ToTopButton onClickTopButton={onClickTopButton} />}
     </>
   );
 }

@@ -21,4 +21,5 @@
   border-radius: 12px;
   transform: scale(1.1);
   z-index: 2;
+  cursor: zoom-in;
 }
