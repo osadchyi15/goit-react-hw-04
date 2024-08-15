@@ -1,5 +1,5 @@
 .backdrop {
-  background-color: rgba(0, 0, 0, 0.762);
+  background-color: rgba(0, 0, 0, 0.482);
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +14,6 @@
   align-items: center;
   position: absolute;
   border-radius: 10px;
-
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
