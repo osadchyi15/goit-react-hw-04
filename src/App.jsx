@@ -29,7 +29,8 @@ function App() {
       try {
         setIsLoading(true);
         const { results, total_pages } = await requestImages(query, page);
-
+        if (results.length === 0)
+          return toast.error("Sorry. No images found for your request!");
         setIsBtnVisible(true);
 
         if (page === 1) {
