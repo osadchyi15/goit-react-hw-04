@@ -28,10 +28,14 @@ function App() {
 
       try {
         setIsLoading(true);
+        setIsBtnVisible(false);
         const { results, total_pages } = await requestImages(query, page);
-        if (results.length === 0)
+        if (results.length === 0) {
+          setIsBtnVisible(false);
           return toast.error("Sorry. No images found for your request!");
-        setIsBtnVisible(true);
+        } else {
+          setIsBtnVisible(true);
+        }
 
         if (page === 1) {
           setImages(results);
