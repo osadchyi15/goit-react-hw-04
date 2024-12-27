@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import css from "./ImageModal.module.css";
-
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
