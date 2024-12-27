@@ -1,0 +1,18 @@
+.itemsList {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.image {
+  border-radius: 10px;
+  border: 1px solid white;
+  object-fit: cover;
+  transition: 1000ms;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
