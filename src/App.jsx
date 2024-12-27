@@ -8,6 +8,7 @@ import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import toast from "react-hot-toast";
 import ImageModal from "./components/ImageModal/ImageModal";
 import ToTopButton from "./components/ToTopButton/ToTopButton";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 
 function App() {
   const [responseData, setResponseData] = useState([]);
@@ -20,22 +21,6 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [fullImage, setFullImage] = useState({});
   const [windowScroll, setWindowScroll] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const searchValue = e.target.search.value;
-    if (searchValue.toLowerCase() === clientQuery.toLowerCase()) {
-      toast.error("Please, change your search request!", {
-        ...toastPosition,
-      });
-      e.target.reset();
-      return;
-    }
-    setClientQuery(searchValue);
-    setResponseData([]);
-    setPage(1);
-    e.target.reset();
-  };
 
   const handleMoreBtn = () => {
     setPage((prev) => prev + 1);
@@ -86,6 +71,18 @@ function App() {
     getResponseData();
   }, [clientQuery, page]);
 
+  const handleChangeQuery = (newQuery) => {
+    if (newQuery.toLowerCase() === clientQuery.toLowerCase()) {
+      toast.error("Please, change your search request!", {
+        ...toastPosition,
+      });
+      return;
+    }
+    setClientQuery(newQuery);
+    setResponseData([]);
+    setPage(1);
+  };
+
   const imageHandler = (e) => {
     setFullImage({});
     const fullInfo = {
@@ -114,10 +111,13 @@ function App() {
 
   return (
     <>
-      <SearchBar onSubmit={handleSubmit} clientQuery={clientQuery} />
+      <SearchBar
+        onSearchChanged={handleChangeQuery}
+        clientQuery={clientQuery}
+      />
       <div className="gallery">
         {isLoading && <Loader />}
-        {isError && <h2 className="error">Something went wrong!</h2>}
+        {isError && <ErrorMessage />}
         {responseData.length > 0 && (
           <ImageGallery data={responseData} imageHandler={imageHandler} />
         )}

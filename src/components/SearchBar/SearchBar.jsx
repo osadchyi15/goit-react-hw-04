@@ -1,10 +1,20 @@
 import s from "./SearchBar.module.css";
+import { useState } from "react";
 
-const SearchBar = ({ onSubmit, clientQuery }) => {
+const SearchBar = ({ onSearchChanged, clientQuery }) => {
+  const [value, setValue] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSearchChanged(value);
+    e.target.reset();
+  };
+
   return (
     <header className={s.header}>
-      <form className={s.form} onSubmit={onSubmit}>
+      <form className={s.form} onSubmit={handleSubmit}>
         <input
+          onChange={(e) => setValue(e.target.value)}
           className={s.input}
           name="search"
           type="text"
@@ -12,7 +22,7 @@ const SearchBar = ({ onSubmit, clientQuery }) => {
           autoFocus
           placeholder={
             clientQuery
-              ? `Current search '${clientQuery.toUpperCase()}'. Enter new search.`
+              ? `Current search '${value.toUpperCase()}'. Enter new search.`
               : "Search images and photos"
           }
         />
