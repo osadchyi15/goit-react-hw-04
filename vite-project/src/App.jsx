@@ -73,6 +73,7 @@ function App() {
               ...toastPosition,
             })
           : setIsLoadMoreVisible(true);
+        results.length === 0 && setIsLoadMoreVisible(false);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
