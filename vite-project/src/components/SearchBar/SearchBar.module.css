@@ -1,10 +1,16 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 227, 194, 0.2);
+  background-color: rgb(37, 36, 35);
   margin-bottom: 10px;
   height: 60px;
+  width: 100%;
+  z-index: 2;
 }
 
 .form {
@@ -20,8 +26,10 @@
   border: 1px solid white;
   height: 36px;
   width: 300px;
-  background-color: transparent;
+  background-color: rgba(255, 227, 194);
   outline: none;
+  text-align: center;
+  color: #000;
   transition: 1000ms;
 }
 
@@ -33,6 +41,10 @@
 .input::placeholder {
   text-align: center;
   color: black;
+}
+
+.input:hover::placeholder {
+  color: transparent;
 }
 
 .submitBtn {

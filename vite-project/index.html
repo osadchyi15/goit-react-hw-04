@@ -4,18 +4,22 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script src="three.r134.min.js"></script>
+    <script src="vanta.fog.min.js"></script>
     <title>Image Finder</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
     <script>
       VANTA.FOG({
-        el: "body",
-        highlightColor: 0xffc200,
-        baseColor: 0x423897,
+        el: "document.body",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 6000.0,
+        minWidth: 1440.0,
       });
     </script>
   </body>

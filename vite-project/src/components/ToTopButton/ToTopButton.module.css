@@ -1,0 +1,23 @@
+.upButton {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  font-size: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid white;
+  color: white;
+  background-color: #383737;
+  transition: 1000ms;
+
+  transform: rotate(-90deg);
+}
+
+.upButton:hover {
+  color: #383737;
+  background-color: white;
+  border: 1px solid black;
+}

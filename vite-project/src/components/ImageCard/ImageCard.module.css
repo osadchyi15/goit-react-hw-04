@@ -1,0 +1,11 @@
+.image {
+  border-radius: 10px;
+  border: 1px solid white;
+  max-width: calc((100vw - 100px) / 3);
+  flex-shrink: 1;
+  object-fit: cover;
+  transition: 1000ms;
+  &:hover {
+    transform: scale(1.05);
+  }
+}

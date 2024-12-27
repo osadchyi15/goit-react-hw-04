@@ -1,17 +1,12 @@
+import ImageCard from "../ImageCard/ImageCard";
 import s from "./ImageGallery.module.css";
 
-const ImageGallery = ({ data }) => {
+const ImageGallery = ({ data, imageHandler }) => {
   return (
     <ul className={s.itemsList}>
       {data.map((item, index) => (
         <li key={item.id + index}>
-          <img
-            className={s.image}
-            src={item.urls.small}
-            width="320px"
-            height="240px"
-            alt={item.alt_description}
-          />
+          <ImageCard item={item} imageHandler={imageHandler} />
         </li>
       ))}
     </ul>
