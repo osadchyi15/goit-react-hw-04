@@ -41,5 +41,10 @@
 }
 
 .gallery {
-  margin-top: 92px;
+  margin-top: 50px;
+}
+
+body {
+  background: -webkit-linear-gradient(90deg, #000000, #454545, #000000);
+  background: linear-gradient(90deg, #000000, #454545, #000000);
 }

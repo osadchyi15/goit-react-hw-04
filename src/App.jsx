@@ -80,13 +80,13 @@ function App() {
       );
       setResponseData([]);
       setIsLoadMoreVisible(false);
+      setClientQuery("");
       return;
     } else if (newQuery.toLowerCase() === clientQuery.toLowerCase()) {
-      toast.error("Please, change your search request!", {
+      toast.error("Your request has not changed.\nPlease modify the request!", {
         ...toastPosition,
       });
       setIsLoadMoreVisible(false);
-      setResponseData([]);
       return;
     }
     setClientQuery(newQuery);
