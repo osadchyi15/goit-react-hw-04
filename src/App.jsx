@@ -36,9 +36,7 @@ function App() {
     const getResponseData = async () => {
       if (!clientQuery) {
         setIsLoadMoreVisible(false);
-        return toast.error("Please, enter new search request!", {
-          ...toastPosition,
-        });
+        return;
       }
 
       try {
@@ -72,7 +70,16 @@ function App() {
   }, [clientQuery, page]);
 
   const handleChangeQuery = (newQuery) => {
-    if (newQuery.toLowerCase() === clientQuery.toLowerCase()) {
+    if (newQuery.trim().length === 0) {
+      toast.error(
+        `You are sending an empty request. \n Please, modify the request!`,
+
+        {
+          ...toastPosition,
+        }
+      );
+      return;
+    } else if (newQuery.toLowerCase() === clientQuery.toLowerCase()) {
       toast.error("Please, change your search request!", {
         ...toastPosition,
       });
