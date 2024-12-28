@@ -78,11 +78,15 @@ function App() {
           ...toastPosition,
         }
       );
+      setResponseData([]);
+      setIsLoadMoreVisible(false);
       return;
     } else if (newQuery.toLowerCase() === clientQuery.toLowerCase()) {
       toast.error("Please, change your search request!", {
         ...toastPosition,
       });
+      setIsLoadMoreVisible(false);
+      setResponseData([]);
       return;
     }
     setClientQuery(newQuery);
