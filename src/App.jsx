@@ -61,9 +61,12 @@ function App() {
 
         if (results.length === 0) {
           setIsLoadMoreVisible(false);
-          toast.error(`We can't find nothing. \n Please, modify the request!`, {
-            ...toastPosition,
-          });
+          toast.error(
+            `We couldn't find anything. \n Please, modify the request!`,
+            {
+              ...toastPosition,
+            }
+          );
         }
 
         setIsLoading(false);
