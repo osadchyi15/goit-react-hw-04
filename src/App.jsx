@@ -50,6 +50,7 @@ function App() {
         });
         setResponseData((prev) => [...prev, ...results]);
         setTotalPages(total_pages);
+
         page === totalPages
           ? setIsLoadMoreVisible(false) &
             toast("You have reached the end of the collection!", {
@@ -57,7 +58,14 @@ function App() {
               ...toastPosition,
             })
           : setIsLoadMoreVisible(true);
-        results.length === 0 && setIsLoadMoreVisible(false);
+
+        if (results.length === 0) {
+          setIsLoadMoreVisible(false);
+          toast.error(`We can't find nothing. \n Please, modify the request!`, {
+            ...toastPosition,
+          });
+        }
+
         setIsLoading(false);
       } catch (error) {
         console.log(error);
